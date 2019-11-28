@@ -443,24 +443,8 @@ class QBankApi
     protected function withOAuth2MiddleWare(HandlerStack $stack)
     {
         if (!($this->oauth2Middleware instanceof OAuthMiddleware)) {
-            $oauthClient = new Client([
-                'base_uri' => $this->basepath,
-                'verify' => $this->verifyCertificates,
-                'headers' => [
-                    'User-Agent' => 'qbank3api-phpwrapper/2 (qbankapi: 1; swagger: 1.1)',
-                ],
-            ]);
-            $config = [
-                PasswordCredentials::CONFIG_USERNAME => $this->credentials->getUsername(),
-                PasswordCredentials::CONFIG_PASSWORD => $this->credentials->getPassword(),
-                PasswordCredentials::CONFIG_CLIENT_ID => $this->credentials->getClientId(),
-                PasswordCredentials::CONFIG_TOKEN_URL => 'oauth2/token',
-            ];
-            $this->oauth2Middleware = new OAuthMiddleware(
-                $oauthClient,
-                new PasswordCredentials($oauthClient, $config),
-                new RefreshToken($oauthClient, $config)
-            );
+            $this->oauth2Middleware = $this->getOAuthMiddleware();
+
             $tokens = $this->getTokens();
             if (!empty($tokens['accessTokens'])) {
                 $this->oauth2Middleware->setAccessToken($tokens['accessTokens']);
@@ -474,6 +458,35 @@ class QBankApi
         $stack->push($this->oauth2Middleware->onFailure(3));
 
         return $stack;
+    }
+
+    /**
+     * Configures the OAUth middleware.
+     *
+     * @return OAuthMiddleware
+     */
+    protected function getOAuthMiddleware(): OAuthMiddleware
+    {
+        $oauthClient = new Client([
+            'base_uri' => $this->basepath,
+            'verify' => $this->verifyCertificates,
+            'headers' => [
+                'User-Agent' => 'qbank3api-phpwrapper/2 (qbankapi: 1; swagger: 1.1)',
+            ],
+        ]);
+        $config = [
+            PasswordCredentials::CONFIG_USERNAME => $this->credentials->getUsername(),
+            PasswordCredentials::CONFIG_PASSWORD => $this->credentials->getPassword(),
+            PasswordCredentials::CONFIG_CLIENT_ID => $this->credentials->getClientId(),
+            PasswordCredentials::CONFIG_TOKEN_URL => 'oauth2/token',
+        ];
+        $oauth2Middleware = new OAuthMiddleware(
+        $oauthClient,
+            new PasswordCredentials($oauthClient, $config),
+            new RefreshToken($oauthClient, $config)
+        );
+
+        return $oauth2Middleware;
     }
 
     /**
@@ -510,6 +523,10 @@ class QBankApi
      */
     public function setTokens(AccessToken $accessToken, AccessToken $refreshToken = null)
     {
+        if (!($this->oauth2Middleware instanceof OAuthMiddleware)) {
+            $this->oauth2Middleware = $this->getOAuthMiddleware();
+        }
+
         if ($accessToken instanceof AccessToken && false === $accessToken->isExpired()) {
             if ($this->cache instanceof Cache) {
                 $this->cache->save(
