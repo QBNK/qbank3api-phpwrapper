@@ -31,7 +31,7 @@ class FolderSearch implements \JsonSerializable
     /** @var int ID of a direct parent folder */
     protected $parentId;
 
-    /** @var PropertyRequest[] An array of Properties to filter by */
+    /** @var PropertyCriteria[] An array of Properties to filter by */
     protected $properties;
 
     /** @var string Filter by object name, uses normal LIKE database syntax */
@@ -317,7 +317,7 @@ class FolderSearch implements \JsonSerializable
 
     /**
      * Gets the properties of the FolderSearch.
-     * @return PropertyRequest[]	 */
+     * @return PropertyCriteria[]	 */
     public function getProperties()
     {
         return $this->properties;
@@ -326,7 +326,7 @@ class FolderSearch implements \JsonSerializable
     /**
      * Sets the "properties" of the FolderSearch.
      *
-     * @param PropertyRequest[] $properties
+     * @param PropertyCriteria[] $properties
      *
      * @return FolderSearch
      */
@@ -335,7 +335,7 @@ class FolderSearch implements \JsonSerializable
         $this->properties = [];
 
         foreach ($properties as $item) {
-            $this->addPropertyRequest($item);
+            $this->addPropertyCriteria($item);
         }
 
         return $this;
@@ -344,21 +344,21 @@ class FolderSearch implements \JsonSerializable
     /**
      * Adds an object of "Properties" of the FolderSearch.
      *
-     * @param PropertyRequest|array $item
+     * @param PropertyCriteria|array $item
      *
      * @return FolderSearch
      */
-    public function addPropertyRequest($item)
+    public function addPropertyCriteria($item)
     {
-        if (!($item instanceof PropertyRequest)) {
+        if (!($item instanceof PropertyCriteria)) {
             if (is_array($item)) {
                 try {
-                    $item = new PropertyRequest($item);
+                    $item = new PropertyCriteria($item);
                 } catch (\Exception $e) {
-                    trigger_error('Could not auto-instantiate PropertyRequest. ' . $e->getMessage(), E_USER_WARNING);
+                    trigger_error('Could not auto-instantiate PropertyCriteria. ' . $e->getMessage(), E_USER_WARNING);
                 }
             } else {
-                trigger_error('Array parameter item is not of expected type "PropertyRequest"!', E_USER_WARNING);
+                trigger_error('Array parameter item is not of expected type "PropertyCriteria"!', E_USER_WARNING);
             }
         }
         $this->properties[] = $item;
