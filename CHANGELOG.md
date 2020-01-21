@@ -3,6 +3,18 @@ All notable changes to this project will be documented in this file.
 
 The format of this changelog adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+
+## [2.1.0]
+### Added
+- Added support for document, font and audio templates
+- Added classification constants for MimeTypes
+### Changed
+- Made redirects stricts to avoid method not allowed issues
+- Bugfix: upload files
+- Bugfix: get deployed files
+- Bugfix: split hierarchical values correctly
+- Various minor bug fixes
+
 ## [2.0.3]
 ### Changed
 - UTF-8 characters won't get escaped in request bodies
