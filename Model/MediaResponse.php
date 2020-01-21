@@ -843,8 +843,17 @@ class MediaResponse extends Media implements \JsonSerializable
      */
     public function getDeployedFile($templateId, $templateType = self::TEMPLATE_IMAGE, $siteId = null)
     {
+        /** @var DeploymentFile $deployedFile */
         foreach ($this->deployedFiles as $deployedFile) {
-            /** @var DeploymentFile $deployedFile */
+            if (null === $templateId
+                    && null === $deployedFile->getImageTemplateId()
+                    && null === $deployedFile->getVideoTemplateId()
+                    && null === $deployedFile->getAudioTemplateId()
+                    && null === $deployedFile->getDocumentTemplateId()
+                    && null === $deployedFile->getFontTemplateId()) {
+                return $deployedFile;
+            }
+
             if (null === $siteId || $siteId == $deployedFile->getDeploymentSiteId()) {
                 switch ($templateType) {
                 case self::TEMPLATE_IMAGE:
