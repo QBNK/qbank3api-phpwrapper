@@ -381,9 +381,9 @@ class QBankApi
             throw new \InvalidArgumentException('Could not parse QBank URL.');
         }
 
-        // Default to HTTP
+        // Default to HTTPS
         if (empty($urlParts['scheme'])) {
-            $urlParts['scheme'] = 'http';
+            $urlParts['scheme'] = 'https';
         }
 
         // Add the api path automatically if omitted for qbank.se hosted QBank instances
