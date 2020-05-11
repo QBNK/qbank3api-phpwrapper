@@ -3,6 +3,9 @@ All notable changes to this project will be documented in this file.
 
 The format of this changelog adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [3.0]
+### Changed
+- API calls will default to https instead of http if no scheme is provided in the API url.
 
 ## [2.1.0]
 ### Added
