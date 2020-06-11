@@ -850,7 +850,9 @@ class MediaResponse extends Media implements \JsonSerializable
                     && null === $deployedFile->getVideoTemplateId()
                     && null === $deployedFile->getAudioTemplateId()
                     && null === $deployedFile->getDocumentTemplateId()
-                    && null === $deployedFile->getFontTemplateId()) {
+                    && null === $deployedFile->getFontTemplateId()
+	                && (null === $siteId || $siteId === $deployedFile->getDeploymentSiteId())
+            ) {
                 return $deployedFile;
             }
 
