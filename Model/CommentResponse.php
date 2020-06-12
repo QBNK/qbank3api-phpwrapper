@@ -188,7 +188,7 @@ class CommentResponse extends Comment implements \JsonSerializable
             $json['createdBy'] = $this->createdBy;
         }
         if (null !== $this->created) {
-            $json['created'] = $this->created->format(\DateTime::ISO8601);
+            $json['created'] = $this->created->format(\DateTime::ATOM);
         }
         if (null !== $this->replies && !empty($this->replies)) {
             $json['replies'] = $this->replies;

@@ -12,7 +12,7 @@ class MediaVersion implements \JsonSerializable
     /** @var string The Media filename */
     protected $filename;
 
-    /** @var DateTime When the Media was uploaded. A datetime string on the format ISO8601. */
+    /** @var DateTime When the Media was uploaded. A datetime string on the format ATOM. */
     protected $uploaded;
 
     /** @var int The Media replacement Media identifier. Only set when the Media has been replaced, ie. versioning. */
@@ -33,7 +33,7 @@ class MediaVersion implements \JsonSerializable
      * @param array $parameters An array of parameters to initialize the {@link MediaVersion} with.
      *                          - <b>mediaId</b> - The Media identifier.
      *                          - <b>filename</b> - The Media filename
-     *                          - <b>uploaded</b> - When the Media was uploaded. A datetime string on the format ISO8601.
+     *                          - <b>uploaded</b> - When the Media was uploaded. A datetime string on the format ATOM.
      *                          - <b>replacedBy</b> - The Media replacement Media identifier. Only set when the Media has been replaced, ie. versioning.
      *                          - <b>comment</b> - An optional comment about the version.
      *                          - <b>userId</b> - The User identifier of the user who created the new version.
@@ -242,7 +242,7 @@ class MediaVersion implements \JsonSerializable
             $json['filename'] = $this->filename;
         }
         if (null !== $this->uploaded) {
-            $json['uploaded'] = $this->uploaded->format(\DateTime::ISO8601);
+            $json['uploaded'] = $this->uploaded->format(\DateTime::ATOM);
         }
         if (null !== $this->replacedBy) {
             $json['replacedBy'] = $this->replacedBy;

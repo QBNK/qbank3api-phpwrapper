@@ -716,10 +716,10 @@ class User implements \JsonSerializable
             $json['email'] = $this->email;
         }
         if (null !== $this->endDate) {
-            $json['endDate'] = $this->endDate->format(\DateTime::ISO8601);
+            $json['endDate'] = $this->endDate->format(\DateTime::ATOM);
         }
         if (null !== $this->startDate) {
-            $json['startDate'] = $this->startDate->format(\DateTime::ISO8601);
+            $json['startDate'] = $this->startDate->format(\DateTime::ATOM);
         }
         if (null !== $this->firstName) {
             $json['firstName'] = $this->firstName;
@@ -731,7 +731,7 @@ class User implements \JsonSerializable
             $json['userName'] = $this->userName;
         }
         if (null !== $this->lastLogin) {
-            $json['lastLogin'] = $this->lastLogin->format(\DateTime::ISO8601);
+            $json['lastLogin'] = $this->lastLogin->format(\DateTime::ATOM);
         }
         if (null !== $this->groups && !empty($this->groups)) {
             $json['groups'] = $this->groups;
@@ -743,13 +743,13 @@ class User implements \JsonSerializable
             $json['deleted'] = $this->deleted;
         }
         if (null !== $this->created) {
-            $json['created'] = $this->created->format(\DateTime::ISO8601);
+            $json['created'] = $this->created->format(\DateTime::ATOM);
         }
         if (null !== $this->createdBy) {
             $json['createdBy'] = $this->createdBy;
         }
         if (null !== $this->updated) {
-            $json['updated'] = $this->updated->format(\DateTime::ISO8601);
+            $json['updated'] = $this->updated->format(\DateTime::ATOM);
         }
         if (null !== $this->updatedBy) {
             $json['updatedBy'] = $this->updatedBy;

@@ -413,7 +413,7 @@ class DeploymentFile implements \JsonSerializable
             $json['templateName'] = $this->templateName;
         }
         if (null !== $this->created) {
-            $json['created'] = $this->created->format(\DateTime::ISO8601);
+            $json['created'] = $this->created->format(\DateTime::ATOM);
         }
         if (null !== $this->filename) {
             $json['filename'] = $this->filename;

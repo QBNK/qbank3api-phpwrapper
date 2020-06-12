@@ -99,10 +99,10 @@ class DateTimeRange implements \JsonSerializable
         $json = [];
 
         if (null !== $this->min) {
-            $json['min'] = $this->min->format(\DateTime::ISO8601);
+            $json['min'] = $this->min->format(\DateTime::ATOM);
         }
         if (null !== $this->max) {
-            $json['max'] = $this->max->format(\DateTime::ISO8601);
+            $json['max'] = $this->max->format(\DateTime::ATOM);
         }
 
         return $json;

@@ -162,10 +162,10 @@ class MediaUsageResponse extends MediaUsage implements \JsonSerializable
             $json['id'] = $this->id;
         }
         if (null !== $this->created) {
-            $json['created'] = $this->created->format(\DateTime::ISO8601);
+            $json['created'] = $this->created->format(\DateTime::ATOM);
         }
         if (null !== $this->deleted) {
-            $json['deleted'] = $this->deleted->format(\DateTime::ISO8601);
+            $json['deleted'] = $this->deleted->format(\DateTime::ATOM);
         }
         if (null !== $this->updatedBy) {
             $json['updatedBy'] = $this->updatedBy;

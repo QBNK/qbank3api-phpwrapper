@@ -310,7 +310,7 @@ class Moodboard implements \JsonSerializable
             $json['templateId'] = $this->templateId;
         }
         if (null !== $this->expireDate) {
-            $json['expireDate'] = $this->expireDate->format(\DateTime::ISO8601);
+            $json['expireDate'] = $this->expireDate->format(\DateTime::ATOM);
         }
         if (null !== $this->definition) {
             $json['definition'] = $this->definition;

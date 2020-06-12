@@ -85,7 +85,7 @@ class Property implements \JsonSerializable
         }
         if (null !== $this->value) {
             if ($this->value instanceof \DateTime) {
-                $json['value'] = $this->value->format(\DateTime::ISO8601);
+                $json['value'] = $this->value->format(\DateTime::ATOM);
             } else {
                 $json['value'] = $this->value;
             }

@@ -364,13 +364,13 @@ class DeploymentSiteResponse extends DeploymentSite implements \JsonSerializable
             $json['objectId'] = $this->objectId;
         }
         if (null !== $this->created) {
-            $json['created'] = $this->created->format(\DateTime::ISO8601);
+            $json['created'] = $this->created->format(\DateTime::ATOM);
         }
         if (null !== $this->createdBy) {
             $json['createdBy'] = $this->createdBy;
         }
         if (null !== $this->updated) {
-            $json['updated'] = $this->updated->format(\DateTime::ISO8601);
+            $json['updated'] = $this->updated->format(\DateTime::ATOM);
         }
         if (null !== $this->updatedBy) {
             $json['updatedBy'] = $this->updatedBy;

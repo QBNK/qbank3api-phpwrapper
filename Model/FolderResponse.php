@@ -497,13 +497,13 @@ class FolderResponse extends Folder implements \JsonSerializable
             $json['objectId'] = $this->objectId;
         }
         if (null !== $this->created) {
-            $json['created'] = $this->created->format(\DateTime::ISO8601);
+            $json['created'] = $this->created->format(\DateTime::ATOM);
         }
         if (null !== $this->createdBy) {
             $json['createdBy'] = $this->createdBy;
         }
         if (null !== $this->updated) {
-            $json['updated'] = $this->updated->format(\DateTime::ISO8601);
+            $json['updated'] = $this->updated->format(\DateTime::ATOM);
         }
         if (null !== $this->updatedBy) {
             $json['updatedBy'] = $this->updatedBy;
@@ -524,7 +524,7 @@ class FolderResponse extends Folder implements \JsonSerializable
                 /** @var Property $property */
                 if (!isset($json['properties'][$property->getPropertyType()->getSystemName()])) {
                     if ($property->getValue() instanceof \DateTime) {
-                        $json['properties'][$property->getPropertyType()->getSystemName()] = $property->getValue()->format(\DateTime::ISO8601);
+                        $json['properties'][$property->getPropertyType()->getSystemName()] = $property->getValue()->format(\DateTime::ATOM);
                     } else {
                         $json['properties'][$property->getPropertyType()->getSystemName()] = $property->getValue();
                     }
