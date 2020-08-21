@@ -3,6 +3,14 @@ All notable changes to this project will be documented in this file.
 
 The format of this changelog adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [3.1]
+### Added
+- Method to remove a user from one or several groups in QBank.
+
+## [3.0.1]
+### Changed
+- Fixed bug where MediaResponse::getDeployedFile() could return a deployed file that belongs to another publish site than requested.
+
 ## [3.0]
 ### Changed
 - API calls will default to https instead of http if no scheme is provided in the API url.

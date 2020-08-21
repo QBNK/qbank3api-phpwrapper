@@ -510,4 +510,25 @@ class AccountsController extends ControllerAbstract
 
         return $result;
     }
+
+    /**
+     * Remove the user from one or more groups.
+     *
+     * @param  int    $id
+     * @param  string $groupIds a comma separated string of group ids we should remove the user from
+     * @return User
+     */
+    public function removeUserFromGroup($id, $groupIds)
+    {
+        $parameters = [
+            'query' => ['groupIds' => $groupIds],
+            'body' => json_encode([], JSON_UNESCAPED_UNICODE),
+            'headers' => [],
+        ];
+
+        $result = $this->delete('v1/accounts/users/' . $id . '/groups', $parameters);
+        $result = new User($result);
+
+        return $result;
+    }
 }
