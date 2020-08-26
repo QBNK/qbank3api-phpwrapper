@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 The format of this changelog adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [3.1.1]
+### Changed
+- Moved the Folder::parentId property to the FolderResponse class since it's not used when creating folders and thus creates confusion.
+
 ## [3.1]
 ### Added
 - Method to remove a user from one or several groups in QBank.

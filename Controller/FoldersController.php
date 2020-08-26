@@ -143,15 +143,15 @@ class FoldersController extends ControllerAbstract
      * Update a Folder.
      *
      * @param  int            $id     the Folder identifier
-     * @param  Folder         $folder A JSON encoded Folder representing the updates
+     * @param  FolderResponse $folder A JSON encoded Folder representing the updates
      * @return FolderResponse
      */
-    public function updateFolder($id, Folder $folder)
+    public function updateFolder($id, FolderResponse $folder)
     {
         $parameters = [
             'query' => [],
             'body' => json_encode(['folder' => $folder], JSON_UNESCAPED_UNICODE),
-            'headers' => [],
+            'headers' => []
         ];
 
         $result = $this->post('v1/folders/' . $id . '', $parameters);
