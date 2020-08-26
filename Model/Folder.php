@@ -4,8 +4,6 @@ namespace QBNK\QBank\API\Model;
 
 class Folder implements \JsonSerializable
 {
-    /** @var int An optional parent Folder identifier. */
-    protected $parentId;
 
     /** @var string The Objects name. */
     protected $name;
@@ -21,21 +19,16 @@ class Folder implements \JsonSerializable
 
     /**
      * Constructs a Folder.
-     *
-     * @param array $parameters An array of parameters to initialize the {@link Folder} with.
-     *                          - <b>parentId</b> - An optional parent Folder identifier.
-     *                          - <b>name</b> - The Objects name.
-     *                          - <b>deleted</b> - Whether the object is deleted.
-     *                          - <b>properties</b> - A systemName => value array of properties. This is only used when updating an object. See the "propertySets" parameter for complete properties when fetching an object.
-     *                          - <b>typeId</b> - The identifier of the ObjectType describing the propertysets this object should use.
+     * @param array $parameters An array of parameters to initialize the { @link Folder } with.
+     * - <b>name</b> - The Objects name.
+     * - <b>deleted</b> - Whether the object is deleted.
+     * - <b>properties</b> - A systemName => value array of properties. This is only used when updating an object. See the "propertySets" parameter for complete properties when fetching an object.
+     * - <b>typeId</b> - The identifier of the ObjectType describing the propertysets this object should use.
      */
     public function __construct($parameters = [])
     {
         $this->properties = [];
 
-        if (isset($parameters['parentId'])) {
-            $this->setParentId($parameters['parentId']);
-        }
         if (isset($parameters['name'])) {
             $this->setName($parameters['name']);
         }
@@ -48,49 +41,26 @@ class Folder implements \JsonSerializable
         if (isset($parameters['typeId'])) {
             $this->setTypeId($parameters['typeId']);
         }
-    }
 
-    /**
-     * Gets the parentId of the Folder.
-     * @return int	 */
-    public function getParentId()
-    {
-        return $this->parentId;
-    }
-
-    /**
-     * Sets the "parentId" of the Folder.
-     *
-     * @param int $parentId
-     *
-     * @return Folder
-     */
-    public function setParentId($parentId)
-    {
-        $this->parentId = $parentId;
-
-        return $this;
     }
 
     /**
      * Gets the name of the Folder.
-     * @return string	 */
+     * @return string
+     */
     public function getName()
     {
         return $this->name;
     }
 
     /**
-     * Sets the "name" of the Folder.
-     *
+     * Sets the "name" of the Folder
      * @param string $name
-     *
      * @return Folder
      */
     public function setName($name)
     {
-        $this->name = $name;
-
+        $this->name =  $name;
         return $this;
     }
 
@@ -103,16 +73,13 @@ class Folder implements \JsonSerializable
     }
 
     /**
-     * Sets the "deleted" of the Folder.
-     *
+     * Sets the "deleted" of the Folder
      * @param bool $deleted
-     *
      * @return Folder
      */
     public function setDeleted($deleted)
     {
-        $this->deleted = $deleted;
-
+        $this->deleted =  $deleted;
         return $this;
     }
 
@@ -125,16 +92,13 @@ class Folder implements \JsonSerializable
     }
 
     /**
-     * Sets the "properties" of the Folder.
-     *
+     * Sets the "properties" of the Folder
      * @param string[] $properties
-     *
      * @return Folder
      */
     public function setProperties(array $properties)
     {
-        $this->properties = $properties;
-
+        $this->properties =  $properties;
         return $this;
     }
 
@@ -147,41 +111,34 @@ class Folder implements \JsonSerializable
     }
 
     /**
-     * Sets the "typeId" of the Folder.
-     *
+     * Sets the "typeId" of the Folder
      * @param int $typeId
-     *
      * @return Folder
      */
     public function setTypeId($typeId)
     {
-        $this->typeId = $typeId;
-
+        $this->typeId =  $typeId;
         return $this;
     }
 
     /**
      * Gets all data that should be available in a json representation.
-     *
-     * @return array an associative array of the available variables
+     * @return array An associative array of the available variables.
      */
     public function jsonSerialize()
     {
         $json = [];
 
-        if (null !== $this->parentId) {
-            $json['parentId'] = $this->parentId;
-        }
-        if (null !== $this->name) {
+        if ($this->name !== null) {
             $json['name'] = $this->name;
         }
-        if (null !== $this->deleted) {
+        if ($this->deleted !== null) {
             $json['deleted'] = $this->deleted;
         }
-        if (null !== $this->properties && !empty($this->properties)) {
+        if ($this->properties !== null && !empty($this->properties)) {
             $json['properties'] = $this->properties;
         }
-        if (null !== $this->typeId) {
+        if ($this->typeId !== null) {
             $json['typeId'] = $this->typeId;
         }
 
