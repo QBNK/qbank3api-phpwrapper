@@ -16,10 +16,10 @@
     "email": "support@qbank.se"
   },
   "require": {
-    "php": ">=5.5",
+    "php": ">=7.2",
     "ext-json": "*",
-    "guzzlehttp/guzzle": "^6.5",
-    "sainsburys/guzzle-oauth2-plugin": "~3.0",
+    "guzzlehttp/guzzle": "^7.0",
+    "qbnk/guzzle-oauth2-plugin": "^4.0",
     "doctrine/cache": "~1.8",
     "psr/log": "~1.0"
   },
