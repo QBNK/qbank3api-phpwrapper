@@ -13,7 +13,6 @@ class CategoriesController extends ControllerAbstract
      *
      * Lists all categories that the current user has access to.
      *
-
      * @param CachePolicy $cachePolicy a custom cache policy used for this request only
      *
      * @return CategoryResponse[]
@@ -63,7 +62,8 @@ class CategoriesController extends ControllerAbstract
     /**
      * Create a Category.
      *
-     * @param  Category         $category A JSON encoded Category to create
+     * @param Category $category A JSON encoded Category to create
+     *
      * @return CategoryResponse
      */
     public function createCategory(Category $category)
@@ -83,8 +83,9 @@ class CategoriesController extends ControllerAbstract
     /**
      * Update a Category.
      *
-     * @param  int              $id       the Category identifier
-     * @param  Category         $category A JSON encoded Category representing the updates
+     * @param int      $id       the Category identifier
+     * @param Category $category A JSON encoded Category representing the updates
+     *
      * @return CategoryResponse
      */
     public function updateCategory($id, Category $category)
@@ -106,7 +107,8 @@ class CategoriesController extends ControllerAbstract
      *
      * You can not delete a category that has Media attached to it.
      *
-     * @param  int              $id the Category identifier
+     * @param int $id the Category identifier
+     *
      * @return CategoryResponse
      */
     public function removeCategory($id)

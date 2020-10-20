@@ -6,10 +6,8 @@ class FolderParent implements \JsonSerializable
 {
     /** @var int The Folder identifier. */
     protected $folderid;
-
     /** @var int The distance from the specified Folder identifer, ie. the reverse depth. */
     protected $depth;
-
     /** @var string The name of the folder */
     protected $name;
 

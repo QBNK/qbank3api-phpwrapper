@@ -6,16 +6,12 @@ class SocialMedia implements \JsonSerializable
 {
     /** @var int The SocialMedia identifier. */
     protected $id;
-
     /** @var string The Objects name. */
     protected $name;
-
     /** @var bool Whether the object is deleted. */
     protected $deleted;
-
     /** @var string[] A systemName => value array of properties. This is only used when updating an object. See the "propertySets" parameter for complete properties when fetching an object. */
     protected $properties;
-
     /** @var int The identifier of the ObjectType describing the propertysets this object should use. */
     protected $typeId;
 

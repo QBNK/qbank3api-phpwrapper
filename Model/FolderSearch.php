@@ -6,37 +6,26 @@ class FolderSearch implements \JsonSerializable
 {
     /** @var int Starting offset of the search */
     protected $offset;
-
     /** @var int The number of results to return */
     protected $limit;
-
     /** @var string A freetext string to search for, operators like and/or/not and grouping by parentheses is available */
     protected $freeText;
-
     /** @var int[] An array with ObjectIds to filter by */
     protected $objectIds;
-
     /** @var int[] Filter by creators of Media */
     protected $createdByIds;
-
     /** @var DateTimeRange Filter by created date */
     protected $createdRange;
-
     /** @var int[] Filter by updaters of Media */
     protected $updatedByIds;
-
     /** @var DateTimeRange Filter by updated date */
     protected $updatedRange;
-
     /** @var int ID of a direct parent folder */
     protected $parentId;
-
     /** @var PropertyCriteria[] An array of Properties to filter by */
     protected $properties;
-
     /** @var string Filter by object name, uses normal LIKE database syntax */
     protected $name;
-
     /** @var SearchSort[] An array of SearchSort fields to order results by */
     protected $sortFields;
 

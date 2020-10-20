@@ -6,13 +6,10 @@ class Protocol implements \JsonSerializable
 {
     /** @var int The Protocol identifier. */
     protected $id;
-
     /** @var string The human readable description of the Protocol. */
     protected $description;
-
     /** @var string The Protocol name. */
     protected $name;
-
     /** @var object The Protocol definition. Describes the needed values and other parameters. */
     protected $definition;
 

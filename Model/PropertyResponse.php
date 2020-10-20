@@ -11,25 +11,18 @@ class PropertyResponse implements \JsonSerializable
 
     /** @var DateTime When the Property was created. */
     protected $created;
-
     /** @var int The identifier of the User who created the Property. */
     protected $createdBy;
-
     /** @var DateTime When the Property was updated. */
     protected $updated;
-
     /** @var int Which user who updated the Property. */
     protected $updatedBy;
-
     /** @var bool Whether the Property is deleted. */
     protected $deleted;
-
     /** @var bool Whether the Property has been modified since constructed. */
     protected $dirty;
-
     /** @var PropertyType The PropertyType describing this Property. */
     protected $propertyType;
-
     /** @var string The value of the Property. */
     protected $value;
 
@@ -272,9 +265,9 @@ class PropertyResponse implements \JsonSerializable
         if (isset($definition['hierarchical']) && $definition['hierarchical']) {
             $this->value = [];
             foreach ($value as $branch) {
-            	$branchValue = [];
+                $branchValue = [];
                 foreach ($branch['value'] as $itemValue) {
-					$branchValue[] = $this->convertValue($itemValue['value']);
+                    $branchValue[] = $this->convertValue($itemValue['value']);
                 }
                 $this->value[] = $branchValue;
             }

@@ -8,13 +8,10 @@ class CommentResponse extends Comment implements \JsonSerializable
 {
     /** @var int Id of the comment */
     protected $id;
-
     /** @var int The QBank user that wrote this comment */
     protected $createdBy;
-
     /** @var DateTime Time this comment was made */
     protected $created;
-
     /** @var CommentResponse[] A array of eventual replies to this comment */
     protected $replies;
 

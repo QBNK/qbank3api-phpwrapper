@@ -6,28 +6,20 @@ class SlideTransition implements \JsonSerializable
 {
     /** @var int The transition to use */
     protected $type;
-
     /** @var int Speed of the transition, in milliseconds */
     protected $speed;
-
     /** @var int Advance to the next slide after X milliseconds */
     protected $advanceAfterTime;
-
     /** @var bool Indicates if we should move to the next slide on mouse click */
     protected $advanceOnClick;
-
     /** @var int Orientation of transition, if applicable */
     protected $orientation;
-
     /** @var int Direction of transition, if applicable */
     protected $direction;
-
     /** @var int Pattern of transition, if applicable */
     protected $pattern;
-
     /** @var bool Indicates if transition should bounce, if applicable */
     protected $bounce;
-
     /** @var bool Indicates if transition should bounce, if applicable */
     protected $fromBlack;
 

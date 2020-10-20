@@ -8,31 +8,22 @@ class Functionality implements \JsonSerializable
 {
     /** @var int The Functionality identifier. */
     protected $id;
-
     /** @var string The name of the functionality (used programmatically) */
     protected $name;
-
     /** @var string Description of what this functionality means */
     protected $description;
-
     /** @var bool Whether the object has been modified since constructed. */
     protected $dirty;
-
     /** @var bool Indicates if this Functionality is deleted */
     protected $deleted;
-
     /** @var DateTime When the Functionality was created. */
     protected $created;
-
     /** @var int The User Id that created the Functionality */
     protected $createdBy;
-
     /** @var DateTime When the Functionality was updated. */
     protected $updated;
-
     /** @var int User Id that updated the Functionality */
     protected $updatedBy;
-
     /** @var string A title that can be used to show the user */
     protected $title;
 

@@ -104,8 +104,9 @@ class EventsController extends ControllerAbstract
     /**
      * Register a usage of a Media.
      *
-     * @param  int                $sessionId  The session id to log the event on
-     * @param  MediaUsage         $mediaUsage The MediaUsage to register
+     * @param int        $sessionId  The session id to log the event on
+     * @param MediaUsage $mediaUsage The MediaUsage to register
+     *
      * @return MediaUsageResponse
      */
     public function addUsage($sessionId, MediaUsage $mediaUsage)
@@ -147,7 +148,8 @@ class EventsController extends ControllerAbstract
     /**
      * Unregister (remove) a Media usage.
      *
-     * @param  int                $id the ID of the usage to remove
+     * @param int $id the ID of the usage to remove
+     *
      * @return MediaUsageResponse
      */
     public function removeUsage($id)

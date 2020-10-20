@@ -9,31 +9,22 @@ class ObjectType implements \JsonSerializable
 {
     /** @var string The name of the ObjectType */
     protected $name;
-
     /** @var string A description of the ObjectType */
     protected $description;
-
     /** @var string The type of Object Type. */
     protected $type;
-
     /** @var int The id of the ObjectType */
     protected $id;
-
     /** @var DateTime When the ObjectType was created. */
     protected $created;
-
     /** @var int The identifier of the User who created the ObjectType. */
     protected $createdBy;
-
     /** @var DateTime When the ObjectType was updated. */
     protected $updated;
-
     /** @var int Which user that updated the ObjectType. */
     protected $updatedBy;
-
     /** @var PropertySet[] The objects PropertySets. This contains all properties with information and values. Use the "properties" parameter when setting properties. */
     protected $propertySets;
-
     /** @var bool Whether this ObjectType is deleted. */
     protected $deleted;
 

@@ -8,31 +8,22 @@ class ExtraData implements \JsonSerializable
 {
     /** @var int The ExtraData identifier. */
     protected $id;
-
     /** @var bool Whether the object has been modified since constructed. */
     protected $dirty;
-
     /** @var bool Indicates if this ExtraData is deleted */
     protected $deleted;
-
     /** @var DateTime When the ExtraData was created. */
     protected $created;
-
     /** @var int The User Id that created the ExtraData */
     protected $createdBy;
-
     /** @var DateTime When the ExtraData was updated. */
     protected $updated;
-
     /** @var int User Id that updated the ExtraData */
     protected $updatedBy;
-
     /** @var string The ExtraData key */
     protected $key;
-
     /** @var int The ExtraData Key Identifier */
     protected $keyId;
-
     /** @var string The value of the ExtraData */
     protected $value;
 

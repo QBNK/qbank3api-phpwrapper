@@ -6,10 +6,8 @@ class SlideStructure implements \JsonSerializable
 {
     /** @var int Media that contains the slide */
     protected $mediaId;
-
     /** @var int Slide number, first slide is slide 0. */
     protected $slide;
-
     /** @var SlideTransition The transition to use when showing this slide */
     protected $transition;
 

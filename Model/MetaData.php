@@ -6,7 +6,6 @@ class MetaData implements \JsonSerializable
 {
     /** @var string The MetaData section name. */
     protected $section;
-
     /** @var object The MetaData data as a key-value object. */
     protected $data;
 

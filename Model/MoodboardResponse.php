@@ -9,31 +9,22 @@ class MoodboardResponse extends Moodboard implements \JsonSerializable
 {
     /** @var int The Moodboard identifier */
     protected $id;
-
     /** @var string Enduser hash used to identify this moodboard. */
     protected $hash;
-
     /** @var int The base Object identifier. */
     protected $objectId;
-
     /** @var DateTime When the Object was created. */
     protected $created;
-
     /** @var int The identifier of the User who created the Object. */
     protected $createdBy;
-
     /** @var DateTime When the Object was updated. */
     protected $updated;
-
     /** @var int Which user that updated the Object. */
     protected $updatedBy;
-
     /** @var bool Whether the object has been modified since constructed. */
     protected $dirty;
-
     /** @var PropertySet[] The objects PropertySets. This contains all properties with information and values. Use the "properties" parameter when setting properties. */
     protected $propertySets;
-
     /** @var int The discriminator id of the extending class */
     protected $discriminatorId;
 
