@@ -446,6 +446,27 @@ class MediaController extends ControllerAbstract
     }
 
     /**
+     * Archive a Media.
+     *
+     * @param int $id the Media identifier
+     *
+     * @return MediaResponse
+     */
+    public function archiveMedia($id)
+    {
+        $parameters = [
+            'query' => [],
+            'body' => json_encode([], JSON_UNESCAPED_UNICODE),
+            'headers' => [],
+        ];
+
+        $result = $this->post('v1/media/' . $id . '/archive', $parameters);
+        $result = new MediaResponse($result);
+
+        return $result;
+    }
+
+    /**
      * Groups one "main" Media with one or more "child" Media.
      *
      * The main medium will by default be the only medium shown when searching, child media can be fetched by issuing a search with parentId set to the main medium id.
