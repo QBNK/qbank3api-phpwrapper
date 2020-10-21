@@ -6,16 +6,12 @@ class Comment implements \JsonSerializable
 {
     /** @var int Object that this comment is made on */
     protected $objectId;
-
     /** @var string The actual comment */
     protected $comment;
-
     /** @var int If a reply, indicates this comments parent */
     protected $parentId;
-
     /** @var string Set only if a anonymous user wrote this comment, see createdBy otherwise */
     protected $userName;
-
     /** @var string Set only if a anonymous user wrote this comment, see createdBy otherwise */
     protected $userEmail;
 

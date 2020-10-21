@@ -8,37 +8,26 @@ class DeploymentFile implements \JsonSerializable
 {
     /** @var int The identifier of the DeploymentSite this file is deployed to. */
     protected $deploymentSiteId;
-
     /** @var string The filename of the deployed file. */
     protected $remoteFile;
-
     /** @var int The identifier of the Image template used. */
     protected $imageTemplateId;
-
     /** @var int The identifier of the Video template used. */
     protected $videoTemplateId;
-
     /** @var int The identifier of the Audio template used. */
     protected $audioTemplateId;
-
     /** @var int The identifier of the Document template used. */
     protected $documentTemplateId;
-
     /** @var int The identifier of the Font template used. */
     protected $fontTemplateId;
-
     /** @var string The name of the template, if any. */
     protected $templateName;
-
-    /** @var DateTime The time of deployment for this file. */
+    /** @var DateTime The time of publishing for this file. */
     protected $created;
-
     /** @var string The original filename of the file when uploaded to QBank. */
     protected $filename;
-
     /** @var int The size of the file on disk */
     protected $filesize;
-
     /** @var object Metadata associated with the deployed media */
     protected $metadata;
 
@@ -54,7 +43,7 @@ class DeploymentFile implements \JsonSerializable
      *                          - <b>documentTemplateId</b> - The identifier of the Document template used.
      *                          - <b>fontTemplateId</b> - The identifier of the Font template used.
      *                          - <b>templateName</b> - The name of the template, if any.
-     *                          - <b>created</b> - The time of deployment for this file.
+     *                          - <b>created</b> - The time of publishing for this file.
      *                          - <b>filename</b> - The original filename of the file when uploaded to QBank.
      *                          - <b>filesize</b> - The size of the file on disk
      *                          - <b>metadata</b> - Metadata associated with the deployed media

@@ -6,46 +6,32 @@ class DeploymentSite implements \JsonSerializable
 {
     /** @var string The human readable description of the DeploymentSite. */
     protected $description;
-
     /** @var Protocol The Protocol used to deploy to the DeploymentSite. */
     protected $protocol;
-
     /** @var object A key-value object with the Protocol specific values. */
     protected $definition;
-
     /** @var string The domain name of the server for the DeploymentSite. */
     protected $viewserver;
-
     /** @var string The url path to were files are accessible for the DeploymentSite. */
     protected $viewpath;
-
     /** @var string The pattern used for naming the files. */
     protected $namingpattern;
-
     /** @var bool Whether grouped Media should be deployed. */
     protected $children;
-
     /** @var string The color associated with the DeploymentSite as a #-prepended hexadecimal string. */
     protected $color;
-
     /** @var ImageTemplate[] The connected ImageTemplates. */
     protected $imagetemplates;
-
     /** @var VideoTemplate[] The connected VideoTemplates. */
     protected $videotemplates;
-
     /** @var CategoryResponse[] The connected Categories. */
     protected $categories;
-
     /** @var string The Objects name. */
     protected $name;
-
     /** @var bool Whether the object is deleted. */
     protected $deleted;
-
     /** @var string[] A systemName => value array of properties. This is only used when updating an object. See the "propertySets" parameter for complete properties when fetching an object. */
     protected $properties;
-
     /** @var int The identifier of the ObjectType describing the propertysets this object should use. */
     protected $typeId;
 

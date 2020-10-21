@@ -8,6 +8,10 @@ use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
+use QBNK\Guzzle\Oauth2\AccessToken;
+use QBNK\Guzzle\Oauth2\GrantType\PasswordCredentials;
+use QBNK\Guzzle\Oauth2\GrantType\RefreshToken;
+use QBNK\Guzzle\Oauth2\Middleware\OAuthMiddleware;
 use QBNK\QBank\API\Controller\AccountsController;
 use QBNK\QBank\API\Controller\CategoriesController;
 use QBNK\QBank\API\Controller\DeploymentController;
@@ -21,10 +25,6 @@ use QBNK\QBank\API\Controller\PropertysetsController;
 use QBNK\QBank\API\Controller\SearchController;
 use QBNK\QBank\API\Controller\SocialmediaController;
 use QBNK\QBank\API\Controller\TemplatesController;
-use QBNK\Guzzle\Oauth2\AccessToken;
-use QBNK\Guzzle\Oauth2\GrantType\PasswordCredentials;
-use QBNK\Guzzle\Oauth2\GrantType\RefreshToken;
-use QBNK\Guzzle\Oauth2\Middleware\OAuthMiddleware;
 
 /**
  * This is the main class to instantiate and use when communicating with QBank.

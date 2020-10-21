@@ -4,26 +4,23 @@ namespace QBNK\QBank\API\Model;
 
 class Folder implements \JsonSerializable
 {
-
     /** @var string The Objects name. */
     protected $name;
-
     /** @var bool Whether the object is deleted. */
     protected $deleted;
-
     /** @var string[] A systemName => value array of properties. This is only used when updating an object. See the "propertySets" parameter for complete properties when fetching an object. */
     protected $properties;
-
     /** @var int The identifier of the ObjectType describing the propertysets this object should use. */
     protected $typeId;
 
     /**
      * Constructs a Folder.
-     * @param array $parameters An array of parameters to initialize the { @link Folder } with.
-     * - <b>name</b> - The Objects name.
-     * - <b>deleted</b> - Whether the object is deleted.
-     * - <b>properties</b> - A systemName => value array of properties. This is only used when updating an object. See the "propertySets" parameter for complete properties when fetching an object.
-     * - <b>typeId</b> - The identifier of the ObjectType describing the propertysets this object should use.
+     *
+     * @param array $parameters An array of parameters to initialize the {@link Folder} with.
+     *                          - <b>name</b> - The Objects name.
+     *                          - <b>deleted</b> - Whether the object is deleted.
+     *                          - <b>properties</b> - A systemName => value array of properties. This is only used when updating an object. See the "propertySets" parameter for complete properties when fetching an object.
+     *                          - <b>typeId</b> - The identifier of the ObjectType describing the propertysets this object should use.
      */
     public function __construct($parameters = [])
     {
@@ -41,26 +38,27 @@ class Folder implements \JsonSerializable
         if (isset($parameters['typeId'])) {
             $this->setTypeId($parameters['typeId']);
         }
-
     }
 
     /**
      * Gets the name of the Folder.
-     * @return string
-     */
+     * @return string	 */
     public function getName()
     {
         return $this->name;
     }
 
     /**
-     * Sets the "name" of the Folder
+     * Sets the "name" of the Folder.
+     *
      * @param string $name
+     *
      * @return Folder
      */
     public function setName($name)
     {
-        $this->name =  $name;
+        $this->name = $name;
+
         return $this;
     }
 
@@ -73,13 +71,16 @@ class Folder implements \JsonSerializable
     }
 
     /**
-     * Sets the "deleted" of the Folder
+     * Sets the "deleted" of the Folder.
+     *
      * @param bool $deleted
+     *
      * @return Folder
      */
     public function setDeleted($deleted)
     {
-        $this->deleted =  $deleted;
+        $this->deleted = $deleted;
+
         return $this;
     }
 
@@ -92,13 +93,16 @@ class Folder implements \JsonSerializable
     }
 
     /**
-     * Sets the "properties" of the Folder
+     * Sets the "properties" of the Folder.
+     *
      * @param string[] $properties
+     *
      * @return Folder
      */
     public function setProperties(array $properties)
     {
-        $this->properties =  $properties;
+        $this->properties = $properties;
+
         return $this;
     }
 
@@ -111,34 +115,38 @@ class Folder implements \JsonSerializable
     }
 
     /**
-     * Sets the "typeId" of the Folder
+     * Sets the "typeId" of the Folder.
+     *
      * @param int $typeId
+     *
      * @return Folder
      */
     public function setTypeId($typeId)
     {
-        $this->typeId =  $typeId;
+        $this->typeId = $typeId;
+
         return $this;
     }
 
     /**
      * Gets all data that should be available in a json representation.
-     * @return array An associative array of the available variables.
+     *
+     * @return array an associative array of the available variables
      */
     public function jsonSerialize()
     {
         $json = [];
 
-        if ($this->name !== null) {
+        if (null !== $this->name) {
             $json['name'] = $this->name;
         }
-        if ($this->deleted !== null) {
+        if (null !== $this->deleted) {
             $json['deleted'] = $this->deleted;
         }
-        if ($this->properties !== null && !empty($this->properties)) {
+        if (null !== $this->properties && !empty($this->properties)) {
             $json['properties'] = $this->properties;
         }
-        if ($this->typeId !== null) {
+        if (null !== $this->typeId) {
             $json['typeId'] = $this->typeId;
         }
 

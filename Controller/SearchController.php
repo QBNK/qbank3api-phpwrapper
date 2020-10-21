@@ -13,6 +13,8 @@ class SearchController extends ControllerAbstract
     const RETURN_IDS = 2;
 
     /**
+     * routes to <mark>QBNK\QBank\Api\v1\Search::metadata();</mark>.
+     *
      * @param CachePolicy $cachePolicy a custom cache policy used for this request only
      */
     public function metadata(CachePolicy $cachePolicy = null)
@@ -33,8 +35,9 @@ class SearchController extends ControllerAbstract
      *
      * in QBank
      *
-     * @param  Search       $search     Search parameters
-     * @param  int          $returnType whether to return object, mediaIds
+     * @param Search $search     Search parameters
+     * @param int    $returnType whether to return object, mediaIds
+     *
      * @return SearchResult
      */
     public function search(Search $search, $returnType = self::RETURN_OBJECTS, CachePolicy $cachePolicy = null)
@@ -56,7 +59,8 @@ class SearchController extends ControllerAbstract
      *
      * s in QBank
      *
-     * @param  FolderSearch $search Search parameters
+     * @param FolderSearch $search Search parameters
+     *
      * @return SearchResult
      */
     public function folderSearch(FolderSearch $search)

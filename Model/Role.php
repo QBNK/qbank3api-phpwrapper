@@ -8,31 +8,22 @@ class Role implements \JsonSerializable
 {
     /** @var int The Role identifier. */
     protected $id;
-
     /** @var string The name of the Role */
     protected $name;
-
     /** @var string Description of what this Role means */
     protected $description;
-
     /** @var bool Whether the object has been modified since constructed. */
     protected $dirty;
-
     /** @var bool Indicates if this Role is deleted */
     protected $deleted;
-
     /** @var DateTime When the Role was created. */
     protected $created;
-
     /** @var int The User Id that created the Role */
     protected $createdBy;
-
     /** @var DateTime When the Role was updated. */
     protected $updated;
-
     /** @var int User Id that updated the Role */
     protected $updatedBy;
-
     /** @var Functionality[] An array of Functionalities connected to this role */
     protected $functionalities;
 

@@ -15,31 +15,22 @@ class PropertyType implements \JsonSerializable
 
     /** @var DateTime When the Property was created. */
     protected $created;
-
     /** @var int The identifier of the User who created the Property. */
     protected $createdBy;
-
     /** @var DateTime When the Property was updated. */
     protected $updated;
-
     /** @var int Which user who updated the Property. */
     protected $updatedBy;
-
     /** @var bool Whether the Property is deleted. */
     protected $deleted;
-
     /** @var string The Property name. */
     protected $name;
-
     /** @var string The Property system name, this is used for programmatic access. */
     protected $systemName;
-
     /** @var string A description of the PropertyType. */
     protected $description;
-
     /** @var int Data type for the Property (1: Boolean, 2: DateTime, 3: Decimal, 4: Float, 5: Integer, 6: String) In addition, definition can alter the way a Property should be displayed. */
     protected $dataTypeId;
-
     /** @var object A Key/Value Object containing extra information about how this Property should be used. */
     protected $definition;
 

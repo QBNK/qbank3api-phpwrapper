@@ -15,22 +15,16 @@ class MimeType implements \JsonSerializable
 
     /** @var int The MimeType identifier. */
     protected $id;
-
     /** @var string The MimeType string representation. */
     protected $mimetype;
-
     /** @var string The MimeType human readable description. */
     protected $description;
-
     /** @var bool Whether the MimeType is usable in an ImageTemplate. */
     protected $imagetemplate;
-
     /** @var bool Whether the MimeType is usable in a VideoTemplate. */
     protected $videotemplate;
-
     /** @var string The default file extension of the MimeType. */
     protected $defaultextension;
-
     /** @var string The MimeType class. Eg. image, video, document. */
     protected $classification;
 

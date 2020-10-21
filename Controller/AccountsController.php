@@ -514,8 +514,9 @@ class AccountsController extends ControllerAbstract
     /**
      * Remove the user from one or more groups.
      *
-     * @param  int    $id
-     * @param  string $groupIds a comma separated string of group ids we should remove the user from
+     * @param int    $id
+     * @param string $groupIds a comma separated string of group ids we should remove the user from
+     *
      * @return User
      */
     public function removeUserFromGroup($id, $groupIds)

@@ -6,23 +6,21 @@ class FilterItem implements \JsonSerializable
 {
     /** @var int ID of the Filter (only applicable if Category or Folder FilterItem) */
     protected $id;
-
     /** @var string Title */
     protected $title;
-
     /** @var int[] An array of mediaIds that are tagged with this title */
     protected $mediaIds;
-
     /** @var FilterItem[] */
     protected $filterItems;
 
     /**
      * Constructs a FilterItem.
-     * @param array $parameters An array of parameters to initialize the { @link FilterItem } with.
-     * - <b>id</b> - ID of the Filter (only applicable if Category or Folder FilterItem)
-     * - <b>title</b> - Title
-     * - <b>mediaIds</b> - An array of mediaIds that are tagged with this title
-     * - <b>filterItems</b> -
+     *
+     * @param array $parameters An array of parameters to initialize the {@link FilterItem} with.
+     *                          - <b>id</b> - ID of the Filter (only applicable if Category or Folder FilterItem)
+     *                          - <b>title</b> - Title
+     *                          - <b>mediaIds</b> - An array of mediaIds that are tagged with this title
+     *                          - <b>filterItems</b> -
      */
     public function __construct($parameters = [])
     {
@@ -45,75 +43,83 @@ class FilterItem implements \JsonSerializable
 
     /**
      * Gets the id of the FilterItem.
-     * @return int
-     */
+     * @return int	 */
     public function getId()
     {
         return $this->id;
     }
 
     /**
-     * Sets the "id" of the FilterItem
+     * Sets the "id" of the FilterItem.
+     *
      * @param int $id
+     *
      * @return FilterItem
      */
     public function setId($id)
     {
         $this->id = $id;
+
         return $this;
     }
 
     /**
      * Gets the title of the FilterItem.
-     * @return string
-     */
+     * @return string	 */
     public function getTitle()
     {
         return $this->title;
     }
 
     /**
-     * Sets the "title" of the FilterItem
+     * Sets the "title" of the FilterItem.
+     *
      * @param string $title
+     *
      * @return FilterItem
      */
     public function setTitle($title)
     {
         $this->title = $title;
+
         return $this;
     }
 
     /**
      * Gets the mediaIds of the FilterItem.
-     * @return int[]
-     */
+     * @return int[]	 */
     public function getMediaIds()
     {
         return $this->mediaIds;
     }
 
     /**
-     * Sets the "mediaIds" of the FilterItem
+     * Sets the "mediaIds" of the FilterItem.
+     *
      * @param int[] $mediaIds
+     *
      * @return FilterItem
      */
     public function setMediaIds(array $mediaIds)
     {
         $this->mediaIds = $mediaIds;
+
         return $this;
     }
+
     /**
      * Gets the filterItems of the FilterItem.
-     * @return FilterItem[]
-     */
+     * @return FilterItem[]	 */
     public function getFilterItems()
     {
         return $this->filterItems;
     }
 
     /**
-     * Sets the "filterItems" of the FilterItem
+     * Sets the "filterItems" of the FilterItem.
+     *
      * @param FilterItem[] $filterItems
+     *
      * @return FilterItem
      */
     public function setFilterItems(array $filterItems)
@@ -123,12 +129,15 @@ class FilterItem implements \JsonSerializable
         foreach ($filterItems as $item) {
             $this->addFilterItem($item);
         }
+
         return $this;
     }
 
     /**
-     * Adds an object of "FilterItems" of the FilterItem
+     * Adds an object of "FilterItems" of the FilterItem.
+     *
      * @param FilterItem|array $item
+     *
      * @return FilterItem
      */
     public function addFilterItem($item)
@@ -145,26 +154,29 @@ class FilterItem implements \JsonSerializable
             }
         }
         $this->filterItems[] = $item;
+
         return $this;
     }
 
     /**
      * Gets all data that should be available in a json representation.
-     * @return array An associative array of the available variables.
+     *
+     * @return array an associative array of the available variables
      */
-    public function jsonSerialize() {
+    public function jsonSerialize()
+    {
         $json = [];
 
-        if ($this->id !== null) {
+        if (null !== $this->id) {
             $json['id'] = $this->id;
         }
-        if ($this->title !== null) {
+        if (null !== $this->title) {
             $json['title'] = $this->title;
         }
-        if ($this->mediaIds !== null && !empty($this->mediaIds)) {
+        if (null !== $this->mediaIds && !empty($this->mediaIds)) {
             $json['mediaIds'] = $this->mediaIds;
         }
-        if ($this->filterItems !== null && !empty($this->filterItems)) {
+        if (null !== $this->filterItems && !empty($this->filterItems)) {
             $json['filterItems'] = $this->filterItems;
         }
 

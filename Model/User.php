@@ -8,58 +8,40 @@ class User implements \JsonSerializable
 {
     /** @var int The User identifier. */
     protected $id;
-
     /** @var string The full name of the User. */
     protected $name;
-
     /** @var string Email-address of the User */
     protected $email;
-
     /** @var DateTime Optional last date this User can log in */
     protected $endDate;
-
     /** @var DateTime Optional first date this user can start logging in */
     protected $startDate;
-
     /** @var string First name of the User */
     protected $firstName;
-
     /** @var string Last name of the User */
     protected $lastName;
-
     /** @var string Username for the User */
     protected $userName;
-
     /** @var DateTime Last login time of the User */
     protected $lastLogin;
-
     /** @var Group[] An array of Groups this User is a member of (Note: this will be left as null when listing Users. */
     protected $groups;
-
     /** @var bool Whether the User has been modified since constructed. */
     protected $dirty;
-
     /** @var bool Indicates if this User is deleted */
     protected $deleted;
-
     /** @var DateTime When the User was created. */
     protected $created;
-
     /** @var int The User Id that created the User */
     protected $createdBy;
-
     /** @var DateTime When the User was updated. */
     protected $updated;
-
     /** @var int User Id that updated the User */
     protected $updatedBy;
-
     /** @var Functionality[] An array of Functionalities connected to this User */
     protected $functionalities;
-
     /** @var ExtraData[] An array of ExtraData connected to this User. */
     protected $extraData;
-
     /** @var string Type of user */
     protected $userType;
 

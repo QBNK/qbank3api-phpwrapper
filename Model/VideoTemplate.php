@@ -6,13 +6,10 @@ class VideoTemplate implements \JsonSerializable
 {
     /** @var int The Video Template identifier */
     protected $id;
-
     /** @var string The name of the Video Template */
     protected $name;
-
     /** @var MimeType */
     protected $mimeType;
-
     /** @var Command[] An array of commands for this template */
     protected $commands;
 
