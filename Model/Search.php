@@ -6,85 +6,64 @@ class Search implements \JsonSerializable
 {
     /** @var int Starting offset of the search */
     protected $offset;
-
     /** @var int The number of results to return */
     protected $limit;
-
     /** @var string A freetext string to search for, operators like and/or/not and grouping by parentheses is available */
     protected $freeText;
-
     /** @var int[] An array with ObjectIds to filter by */
     protected $objectIds;
-
     /** @var int[] An array with MediaIds to filter by */
     protected $mediaIds;
-
     /** @var int[] Filter by creators of Media */
     protected $createdByIds;
-
-    /** @var DateTimeRange Filter by created date */
+    /** @var DateTimeRange Filter by created date ({"min":"dateTimeString", "max":"dateTimeString"}) */
     protected $createdRange;
-
     /** @var int[] Filter by updaters of Media */
     protected $updatedByIds;
-
-    /** @var DateTimeRange Filter by updated date */
+    /** @var DateTimeRange Filter by updated date ({"min":"dateTimeString", "max":"dateTimeString"}) */
     protected $updatedRange;
-
+    /** @var int[] Filter by updaters of Media */
+    protected $uploadedByIds;
+    /** @var DateTimeRange Filter by uploaded date ({"min":"dateTimeString", "max":"dateTimeString"}) */
+    protected $uploadedRange;
     /** @var int[] An array with MediaStatuses to filter by */
     protected $mediaStatusIds;
-
     /** @var int[] An array with FolderIds to search within */
     protected $folderIds;
-
     /** @var int The depth of folders to fetch objects from when doing folder searches */
     protected $folderDepth;
-
     /** @var int[] An array with MoodboardIds to search within */
     protected $moodboardIds;
-
     /** @var int[] An array with CategoryIds to search within */
     protected $categoryIds;
-
     /** @var bool Indicates that we should ignore grouping and return child objects in the result */
     protected $ignoreGrouping;
-
     /** @var bool Indicates that we should include grouped objects in each object */
     protected $includeChildren;
-
     /** @var int Search for media that have this media as parent */
     protected $parentId;
-
     /** @var int[] An array with DeploymentSiteIds to search within */
     protected $deploymentSiteIds;
-
     /** @var PropertyCriteria[] An array of Properties to filter by */
     protected $properties;
-
     /** @var string[] Filter by file size. An array with "min" and/or "max" values. */
     protected $fileSizeCriteria;
-
     /** @var string[] Filter by file width. An array with "min" and/or "max" values. */
     protected $widthCriteria;
-
+    /** @var string[] Filter by file duration in seconds. An array with "min" and/or "max" values. */
+    protected $durationCriteria;
     /** @var string[] Filter by file height. An array with "min" and/or "max" values. */
     protected $heightCriteria;
-
     /** @var string[] Filter by mime type. An array of normal LIKE database syntax, for example image/% will return all images, video/% all videos. */
     protected $mimeTypes;
-
     /** @var string Filter by file name, uses normal LIKE database syntax */
     protected $fileName;
-
     /** @var string Filter by object name, uses normal LIKE database syntax */
     protected $name;
-
     /** @var DateTimeRange Filter by deployment date */
     protected $deploymentDateRange;
-
     /** @var SearchSort[] An array of SearchSort fields to order results by */
     protected $sortFields;
-
     /** @var bool Search only for duplicates */
     protected $duplicates;
 
@@ -98,9 +77,11 @@ class Search implements \JsonSerializable
      *                          - <b>objectIds</b> - An array with ObjectIds to filter by
      *                          - <b>mediaIds</b> - An array with MediaIds to filter by
      *                          - <b>createdByIds</b> - Filter by creators of Media
-     *                          - <b>createdRange</b> - Filter by created date
+     *                          - <b>createdRange</b> - Filter by created date ({"min":"dateTimeString", "max":"dateTimeString"})
      *                          - <b>updatedByIds</b> - Filter by updaters of Media
-     *                          - <b>updatedRange</b> - Filter by updated date
+     *                          - <b>updatedRange</b> - Filter by updated date ({"min":"dateTimeString", "max":"dateTimeString"})
+     *                          - <b>uploadedByIds</b> - Filter by updaters of Media
+     *                          - <b>uploadedRange</b> - Filter by uploaded date ({"min":"dateTimeString", "max":"dateTimeString"})
      *                          - <b>mediaStatusIds</b> - An array with MediaStatuses to filter by
      *                          - <b>folderIds</b> - An array with FolderIds to search within
      *                          - <b>folderDepth</b> - The depth of folders to fetch objects from when doing folder searches
@@ -113,6 +94,7 @@ class Search implements \JsonSerializable
      *                          - <b>properties</b> - An array of Properties to filter by
      *                          - <b>fileSizeCriteria</b> - Filter by file size. An array with "min" and/or "max" values.
      *                          - <b>widthCriteria</b> - Filter by file width. An array with "min" and/or "max" values.
+     *                          - <b>durationCriteria</b> - Filter by file duration in seconds. An array with "min" and/or "max" values.
      *                          - <b>heightCriteria</b> - Filter by file height. An array with "min" and/or "max" values.
      *                          - <b>mimeTypes</b> - Filter by mime type. An array of normal LIKE database syntax, for example image/% will return all images, video/% all videos.
      *                          - <b>fileName</b> - Filter by file name, uses normal LIKE database syntax
@@ -127,6 +109,7 @@ class Search implements \JsonSerializable
         $this->mediaIds = [];
         $this->createdByIds = [];
         $this->updatedByIds = [];
+        $this->uploadedByIds = [];
         $this->mediaStatusIds = [];
         $this->folderIds = [];
         $this->moodboardIds = [];
@@ -135,6 +118,7 @@ class Search implements \JsonSerializable
         $this->properties = [];
         $this->fileSizeCriteria = [];
         $this->widthCriteria = [];
+        $this->durationCriteria = [];
         $this->heightCriteria = [];
         $this->mimeTypes = [];
         $this->sortFields = [];
@@ -169,6 +153,12 @@ class Search implements \JsonSerializable
         }
         if (isset($parameters['updatedRange'])) {
             $this->setUpdatedRange($parameters['updatedRange']);
+        }
+        if (isset($parameters['uploadedByIds'])) {
+            $this->setUploadedByIds($parameters['uploadedByIds']);
+        }
+        if (isset($parameters['uploadedRange'])) {
+            $this->setUploadedRange($parameters['uploadedRange']);
         }
         if (isset($parameters['mediaStatusIds'])) {
             $this->setMediaStatusIds($parameters['mediaStatusIds']);
@@ -205,6 +195,9 @@ class Search implements \JsonSerializable
         }
         if (isset($parameters['widthCriteria'])) {
             $this->setWidthCriteria($parameters['widthCriteria']);
+        }
+        if (isset($parameters['durationCriteria'])) {
+            $this->setDurationCriteria($parameters['durationCriteria']);
         }
         if (isset($parameters['heightCriteria'])) {
             $this->setHeightCriteria($parameters['heightCriteria']);
@@ -435,6 +428,57 @@ class Search implements \JsonSerializable
             $this->updatedRange = new DateTimeRange($updatedRange);
         } else {
             $this->updatedRange = null;
+            trigger_error('Argument must be an object of class DateTimeRange. Data loss!', E_USER_WARNING);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Gets the uploadedByIds of the Search.
+     * @return int[]	 */
+    public function getUploadedByIds()
+    {
+        return $this->uploadedByIds;
+    }
+
+    /**
+     * Sets the "uploadedByIds" of the Search.
+     *
+     * @param int[] $uploadedByIds
+     *
+     * @return Search
+     */
+    public function setUploadedByIds(array $uploadedByIds)
+    {
+        $this->uploadedByIds = $uploadedByIds;
+
+        return $this;
+    }
+
+    /**
+     * Gets the uploadedRange of the Search.
+     * @return DateTimeRange	 */
+    public function getUploadedRange()
+    {
+        return $this->uploadedRange;
+    }
+
+    /**
+     * Sets the "uploadedRange" of the Search.
+     *
+     * @param DateTimeRange $uploadedRange
+     *
+     * @return Search
+     */
+    public function setUploadedRange($uploadedRange)
+    {
+        if ($uploadedRange instanceof DateTimeRange) {
+            $this->uploadedRange = $uploadedRange;
+        } elseif (is_array($uploadedRange)) {
+            $this->uploadedRange = new DateTimeRange($uploadedRange);
+        } else {
+            $this->uploadedRange = null;
             trigger_error('Argument must be an object of class DateTimeRange. Data loss!', E_USER_WARNING);
         }
 
@@ -735,6 +779,28 @@ class Search implements \JsonSerializable
     }
 
     /**
+     * Gets the durationCriteria of the Search.
+     * @return string[]	 */
+    public function getDurationCriteria()
+    {
+        return $this->durationCriteria;
+    }
+
+    /**
+     * Sets the "durationCriteria" of the Search.
+     *
+     * @param string[] $durationCriteria
+     *
+     * @return Search
+     */
+    public function setDurationCriteria(array $durationCriteria)
+    {
+        $this->durationCriteria = $durationCriteria;
+
+        return $this;
+    }
+
+    /**
      * Gets the heightCriteria of the Search.
      * @return string[]	 */
     public function getHeightCriteria()
@@ -960,6 +1026,12 @@ class Search implements \JsonSerializable
         if (null !== $this->updatedRange) {
             $json['updatedRange'] = $this->updatedRange;
         }
+        if (null !== $this->uploadedByIds && !empty($this->uploadedByIds)) {
+            $json['uploadedByIds'] = $this->uploadedByIds;
+        }
+        if (null !== $this->uploadedRange) {
+            $json['uploadedRange'] = $this->uploadedRange;
+        }
         if (null !== $this->mediaStatusIds && !empty($this->mediaStatusIds)) {
             $json['mediaStatusIds'] = $this->mediaStatusIds;
         }
@@ -995,6 +1067,9 @@ class Search implements \JsonSerializable
         }
         if (null !== $this->widthCriteria && !empty($this->widthCriteria)) {
             $json['widthCriteria'] = $this->widthCriteria;
+        }
+        if (null !== $this->durationCriteria && !empty($this->durationCriteria)) {
+            $json['durationCriteria'] = $this->durationCriteria;
         }
         if (null !== $this->heightCriteria && !empty($this->heightCriteria)) {
             $json['heightCriteria'] = $this->heightCriteria;
