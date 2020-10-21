@@ -24,6 +24,8 @@ class DeploymentFile implements \JsonSerializable
     protected $templateName;
     /** @var DateTime The time of publishing for this file. */
     protected $created;
+    /** @var DateTime The time of the last re-publishing for this file. */
+    protected $updated;
     /** @var string The original filename of the file when uploaded to QBank. */
     protected $filename;
     /** @var int The size of the file on disk */
@@ -44,6 +46,7 @@ class DeploymentFile implements \JsonSerializable
      *                          - <b>fontTemplateId</b> - The identifier of the Font template used.
      *                          - <b>templateName</b> - The name of the template, if any.
      *                          - <b>created</b> - The time of publishing for this file.
+     *                          - <b>updated</b> - The time of the last re-publishing for this file.
      *                          - <b>filename</b> - The original filename of the file when uploaded to QBank.
      *                          - <b>filesize</b> - The size of the file on disk
      *                          - <b>metadata</b> - Metadata associated with the deployed media
@@ -76,6 +79,9 @@ class DeploymentFile implements \JsonSerializable
         }
         if (isset($parameters['created'])) {
             $this->setCreated($parameters['created']);
+        }
+        if (isset($parameters['updated'])) {
+            $this->setUpdated($parameters['updated']);
         }
         if (isset($parameters['filename'])) {
             $this->setFilename($parameters['filename']);
@@ -295,6 +301,36 @@ class DeploymentFile implements \JsonSerializable
     }
 
     /**
+     * Gets the updated of the DeploymentFile.
+     * @return DateTime	 */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
+     * Sets the "updated" of the DeploymentFile.
+     *
+     * @param DateTime $updated
+     *
+     * @return DeploymentFile
+     */
+    public function setUpdated($updated)
+    {
+        if ($updated instanceof DateTime) {
+            $this->updated = $updated;
+        } else {
+            try {
+                $this->updated = new DateTime($updated);
+            } catch (\Exception $e) {
+                $this->updated = null;
+            }
+        }
+
+        return $this;
+    }
+
+    /**
      * Gets the filename of the DeploymentFile.
      * @return string	 */
     public function getFilename()
@@ -403,6 +439,9 @@ class DeploymentFile implements \JsonSerializable
         }
         if (null !== $this->created) {
             $json['created'] = $this->created->format(\DateTime::ATOM);
+        }
+        if (null !== $this->updated) {
+            $json['updated'] = $this->updated->format(\DateTime::ATOM);
         }
         if (null !== $this->filename) {
             $json['filename'] = $this->filename;
