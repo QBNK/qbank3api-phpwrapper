@@ -25,6 +25,7 @@ use QBNK\QBank\API\Controller\PropertysetsController;
 use QBNK\QBank\API\Controller\SearchController;
 use QBNK\QBank\API\Controller\SocialmediaController;
 use QBNK\QBank\API\Controller\TemplatesController;
+use QBNK\QBank\API\Controller\WebhooksController;
 
 /**
  * This is the main class to instantiate and use when communicating with QBank.
@@ -97,6 +98,9 @@ class QBankApi
 
     /** @var TemplatesController */
     protected $templates;
+
+    /** @var WebhooksController */
+    protected $webhooks;
 
     /**
      * @param string      $qbankURL    the URL to the QBank API
@@ -360,6 +364,21 @@ class QBankApi
         }
 
         return $this->templates;
+    }
+
+    /**
+     * Connect your applications with QBank through webhooks.
+     *
+     * @return WebhooksController
+     */
+    public function webhooks()
+    {
+        if (!$this->webhooks instanceof WebhooksController) {
+            $this->webhooks = new WebhooksController($this->getClient(), $this->cachePolicy, $this->cache);
+            $this->webhooks->setLogger($this->logger);
+        }
+
+        return $this->webhooks;
     }
 
     /**
