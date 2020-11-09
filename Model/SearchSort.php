@@ -6,6 +6,7 @@ class SearchSort implements \JsonSerializable
 {
     const FIELD_ID = 'id';
     const FIELD_NAME = 'name';
+    const FIELD_FILENAME = 'filename';
     const FIELD_CREATED = 'created';
     const FIELD_UPDATED = 'updated';
     const FIELD_RELEVANCE = 'relevance';
