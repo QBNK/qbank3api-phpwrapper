@@ -6,13 +6,10 @@ class ImageTemplate implements \JsonSerializable
 {
     /** @var int The Image Template identifier */
     protected $id;
-
     /** @var string The name of the Image Template */
     protected $name;
-
     /** @var MimeType */
     protected $mimeType;
-
     /** @var Command[] An array of commands for this template */
     protected $commands;
 

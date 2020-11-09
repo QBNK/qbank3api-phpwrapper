@@ -8,31 +8,22 @@ class PropertySet implements \JsonSerializable
 {
     /** @var int The PropertySet identifier */
     protected $id;
-
     /** @var string The PropertySet name. */
     protected $name;
-
     /** @var DateTime When the PropertySet was created. */
     protected $created;
-
     /** @var int The identifier of the User who created the PropertySet. */
     protected $createdBy;
-
     /** @var DateTime When the PropertySet was updated. */
     protected $updated;
-
     /** @var int Which user who updated the PropertySet. */
     protected $updatedBy;
-
     /** @var bool Whether the PropertySet is deleted. */
     protected $deleted;
-
     /** @var bool Whether the PropertySet has been modified since constructed. */
     protected $dirty;
-
     /** @var bool Wheater the PropertySet is a system propertyset or not. (System propertysets are hidden from the enduser) */
     protected $system;
-
     /** @var PropertyResponse[] The Properties associated with the PropertySet. */
     protected $properties;
 

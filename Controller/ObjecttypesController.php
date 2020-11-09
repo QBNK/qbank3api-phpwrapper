@@ -10,7 +10,6 @@ class ObjecttypesController extends ControllerAbstract
     /**
      * Lists all Object Types.
      *
-
      * @param CachePolicy $cachePolicy a custom cache policy used for this request only
      *
      * @return ObjectType[]

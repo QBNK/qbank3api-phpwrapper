@@ -6,10 +6,8 @@ class MoodboardTemplateResponse implements \JsonSerializable
 {
     /** @var int The template identifier. */
     protected $id;
-
     /** @var string The template name. */
     protected $name;
-
     /** @var object Dynamic object detailing the templates options. */
     protected $options;
 

@@ -6,16 +6,12 @@ class DownloadItem implements \JsonSerializable
 {
     /** @var int Media ID */
     protected $mediaId;
-
     /** @var int ImageTemplate ID */
     protected $imageTemplateId;
-
     /** @var int ImageTemplate ID */
     protected $videoTemplateId;
-
     /** @var int ImageTemplate ID */
     protected $documentTemplateId;
-
     /** @var int ImageTemplate ID */
     protected $audioTemplateId;
 

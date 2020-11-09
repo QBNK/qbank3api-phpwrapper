@@ -6,16 +6,12 @@ class MediaUsage implements \JsonSerializable
 {
     /** @var int */
     protected $mediaId;
-
     /** @var string */
     protected $mediaUrl;
-
     /** @var string */
     protected $pageUrl;
-
     /** @var string[] */
     protected $context;
-
     /** @var string */
     protected $language;
 

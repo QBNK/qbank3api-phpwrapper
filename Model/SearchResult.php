@@ -11,13 +11,10 @@ class SearchResult implements \JsonSerializable, \Countable, \Iterator, \ArrayAc
 
     /** @var int Number of hits per page in the SearchResult */
     protected $limit;
-
     /** @var int Starting position of SearchResult */
     protected $offset;
-
     /** @var float Time spent searching */
     protected $timeSearching;
-
     /** @var int Total number of hits */
     protected $totalHits;
 

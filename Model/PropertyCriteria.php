@@ -27,10 +27,8 @@ class PropertyCriteria implements \JsonSerializable
 
     /** @var string The system name of the Property we filter on */
     protected $systemName;
-
     /** @var string The value we filter by */
     protected $value;
-
     /** @var string Comparison operator for the criteria */
     protected $operator;
 

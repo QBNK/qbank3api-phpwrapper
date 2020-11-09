@@ -8,13 +8,10 @@ class MediaUsageResponse extends MediaUsage implements \JsonSerializable
 {
     /** @var int */
     protected $id;
-
     /** @var DateTime */
     protected $created;
-
     /** @var DateTime */
     protected $deleted;
-
     /** @var int */
     protected $updatedBy;
 

@@ -22,22 +22,16 @@ class SearchSort implements \JsonSerializable
 
     /** @var string Field to sort by */
     protected $sortField;
-
     /** @var string Sort Direction */
     protected $sortDirection;
-
     /** @var int When sorting on Media Popularity, the source to check (QBank Backend, frontend, etc) */
     protected $sourceId;
-
     /** @var DateTimeRange When sorting on Media Popularity, a optional dateRange to find popular media within */
     protected $dateRange;
-
     /** @var string When sorting on a property, the system name of the property to sort on */
     protected $systemName;
-
     /** @var string When sorting on a Json Property, the Json key to sort by */
     protected $jsonKey;
-
     /** @var int When sorting on deploymentdate, the optional site id to sort by */
     protected $deploymentSiteId;
 

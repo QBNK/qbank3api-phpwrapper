@@ -6,7 +6,6 @@ class Property implements \JsonSerializable
 {
     /** @var string The system name of the Property we filter on */
     protected $systemName;
-
     /** @var string The value we filter by */
     protected $value;
 

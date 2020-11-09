@@ -8,28 +8,20 @@ class Moodboard implements \JsonSerializable
 {
     /** @var string The pincode used to access this Moodboard. */
     protected $pinCode;
-
     /** @var int The template used by the Moodboard. */
     protected $templateId;
-
     /** @var DateTime The date and time this Moodboard expires. */
     protected $expireDate;
-
     /** @var object A Key/Value Object containing specific template related settings. */
     protected $definition;
-
     /** @var bool Whether this moodboard should notify owner on visits and uploads */
     protected $visitNotification;
-
     /** @var string The Objects name. */
     protected $name;
-
     /** @var bool Whether the object is deleted. */
     protected $deleted;
-
     /** @var string[] A systemName => value array of properties. This is only used when updating an object. See the "propertySets" parameter for complete properties when fetching an object. */
     protected $properties;
-
     /** @var int The identifier of the ObjectType describing the propertysets this object should use. */
     protected $typeId;
 

@@ -8,22 +8,16 @@ class MediaVersion implements \JsonSerializable
 {
     /** @var int The Media identifier. */
     protected $mediaId;
-
     /** @var string The Media filename */
     protected $filename;
-
-    /** @var DateTime When the Media was uploaded. A datetime string on the format ATOM. */
+    /** @var DateTime When the Media was uploaded. A datetime string on the format ISO8601. */
     protected $uploaded;
-
     /** @var int The Media replacement Media identifier. Only set when the Media has been replaced, ie. versioning. */
     protected $replacedBy;
-
     /** @var string An optional comment about the version. */
     protected $comment;
-
     /** @var int The User identifier of the user who created the new version. */
     protected $userId;
-
     /** @var int The version number */
     protected $version;
 
@@ -33,7 +27,7 @@ class MediaVersion implements \JsonSerializable
      * @param array $parameters An array of parameters to initialize the {@link MediaVersion} with.
      *                          - <b>mediaId</b> - The Media identifier.
      *                          - <b>filename</b> - The Media filename
-     *                          - <b>uploaded</b> - When the Media was uploaded. A datetime string on the format ATOM.
+     *                          - <b>uploaded</b> - When the Media was uploaded. A datetime string on the format ISO8601.
      *                          - <b>replacedBy</b> - The Media replacement Media identifier. Only set when the Media has been replaced, ie. versioning.
      *                          - <b>comment</b> - An optional comment about the version.
      *                          - <b>userId</b> - The User identifier of the user who created the new version.

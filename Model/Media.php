@@ -6,25 +6,18 @@ class Media implements \JsonSerializable
 {
     /** @var int The Category identifier of the Category the Media belongs to. */
     protected $categoryId;
-
     /** @var string The Media's filename. */
     protected $filename;
-
     /** @var int The Media parent Media identifier. Only set when the Media is grouped. */
     protected $parentId;
-
     /** @var int The Media replacement Media identifier. Only set when the Media has been replaced, ie. versioning. */
     protected $replacedBy;
-
     /** @var string The Objects name. */
     protected $name;
-
     /** @var bool Whether the object is deleted. */
     protected $deleted;
-
     /** @var string[] A systemName => value array of properties. This is only used when updating an object. See the "propertySets" parameter for complete properties when fetching an object. */
     protected $properties;
-
     /** @var int The identifier of the ObjectType describing the propertysets this object should use. */
     protected $typeId;
 
