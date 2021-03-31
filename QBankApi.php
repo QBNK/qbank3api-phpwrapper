@@ -102,6 +102,10 @@ class QBankApi
     /** @var WebhooksController */
     protected $webhooks;
 
+    /** @var string */
+    protected $uri = '/';
+
+
     /**
      * @param string      $qbankURL    the URL to the QBank API
      * @param Credentials $credentials the credentials used to connect
@@ -405,10 +409,24 @@ class QBankApi
             $urlParts['scheme'] = 'https';
         }
 
-        // Add the api path automatically if omitted for qbank.se hosted QBank instances
-        if ((empty($urlParts['path']) || '/' == $urlParts['path'])
-            && 'qbank.se' == substr($urlParts['host'], -strlen('qbank.se'))) {
+        // Assign URI segments to URI parameter
+        if(isset($urlParts['path'])){
+            $this->uri = $urlParts['path'];
+        }
+        
+
+        // Add the api path automatically for all api url tails
+        if ((empty($urlParts['path']) || '/' == $urlParts['path'])) {
             $urlParts['path'] = '/api/';
+        } else {
+            $pathParts = explode('/', $urlParts['path']);
+
+            if(empty(end($pathParts))) {
+              array_pop($pathParts);
+            }
+
+            $urlParts['path'] = implode('/', $pathParts);
+            $urlParts['path'] .= '/api/';
         }
 
         // Pad the end of the path with a slash
@@ -416,7 +434,9 @@ class QBankApi
             $urlParts['path'] .= '/';
         }
 
-        return $urlParts['scheme'] . '://' . $urlParts['host'] . (!empty($urlParts['port']) ? ':' . $urlParts['port'] : '') . $urlParts['path'];
+        $finalUrl = $urlParts['scheme'] . '://' . $urlParts['host'] . (!empty($urlParts['port']) ? ':' . $urlParts['port'] : '') . $urlParts['path'];
+        
+        return $finalUrl;
     }
 
     /**
@@ -589,7 +609,7 @@ class QBankApi
             $tokens['refreshToken'] = unserialize($this->cache->fetch('oauth2refreshtoken'));
         }
         if (empty($tokens['accessToken'])) {
-            $response = $this->getClient()->get('/');      // Trigger call to get a token. Don't care about the result.
+            $response = $this->getClient()->get($this->uri);      // Trigger call to get a token. Don't care about the result.
             $tokens['accessToken'] = $this->oauth2Middleware->getAccessToken();
             $tokens['refreshToken'] = $this->oauth2Middleware->getRefreshToken();
         }
