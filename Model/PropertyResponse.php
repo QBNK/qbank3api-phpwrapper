@@ -259,19 +259,23 @@ class PropertyResponse implements \JsonSerializable
      *
      * @return Property
      */
-    public function setValue($value)
+    public function setValue($property)
     {
-        if (!is_array($value)) {
-            $this->value = $this->convertValue($value);
-        } else if (count($value) === 1 && !is_array($value[0])) {
-            $this->value = $this->convertValue(current($value)['value']);
+        if (is_string($property) || is_numeric($property) || is_bool($property)) {
+            $this->value = $this->convertValue($property);
         } else {
             $this->value = [];
-            array_walk_recursive($value, function($value, $index) {
-                if (array_key_exists('value', $value) && !is_array($value['value'])) {
-                    $this->value[] = $this->convertValue($value['value']);
+            foreach ($property as $item) {
+                if (is_array($item['value'])) {
+                    $hierarchicalValues = [];
+                    foreach($item['value'] as $part) {
+                        $hierarchicalValues[] = $this->convertValue($part['value']);
+                    }
+                    $this->value[] = $hierarchicalValues;
+                } else {
+                    $this->value[] = $this->convertValue($item['value']);
                 }
-            });
+            }
         }
 
         return $this;
