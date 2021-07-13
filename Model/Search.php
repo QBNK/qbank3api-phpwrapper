@@ -66,6 +66,8 @@ class Search implements \JsonSerializable
     protected $sortFields;
     /** @var bool Search only for duplicates */
     protected $duplicates;
+    /** @var bool Do not return property type definitions */
+    protected $omitPropertyTypeDefinitions;
 
     /**
      * Constructs a Search.
@@ -989,6 +991,30 @@ class Search implements \JsonSerializable
 
         return $this;
     }
+       
+    /**
+     * Get the value of omitPropertyTypeDefinitions
+     * 
+     * @return bool
+     */ 
+    public function getOmitPropertyTypeDefinitions()
+    {
+        return $this->omitPropertyTypeDefinitions;
+    }
+
+    /**
+     * Set the value of omitPropertyTypeDefinitions
+     *
+     * @param bool $omitPropertyTypeDefinitions
+     * 
+     * @return self
+     */ 
+    public function setOmitPropertyTypeDefinitions($omitPropertyTypeDefinitions)
+    {
+        $this->omitPropertyTypeDefinitions = $omitPropertyTypeDefinitions;
+
+        return $this;
+    }
 
     /**
      * Gets all data that should be available in a json representation.
@@ -1091,6 +1117,9 @@ class Search implements \JsonSerializable
         }
         if (null !== $this->duplicates) {
             $json['duplicates'] = $this->duplicates;
+        }
+        if (null !== $this->omitPropertyTypeDefinitions) {
+            $json['omitPropertyTypeDefinitions'] = $this->omitPropertyTypeDefinitions;
         }
 
         return $json;
