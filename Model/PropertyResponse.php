@@ -261,27 +261,17 @@ class PropertyResponse implements \JsonSerializable
      */
     public function setValue($value)
     {
-        $definition = $this->propertyType->getDefinition();
-        if (isset($definition['hierarchical']) && $definition['hierarchical']) {
-            $this->value = [];
-            foreach ($value as $branch) {
-                $branchValue = [];
-                foreach ($branch['value'] as $itemValue) {
-                    $branchValue[] = $this->convertValue($itemValue['value']);
-                }
-                $this->value[] = $branchValue;
-            }
-        } elseif (!empty($definition['array'])) {
-            if (empty($definition['multiplechoice']) && isset($definition['options']) && is_array($definition['options'])) {
-                $this->value = $this->convertValue(current($value)['value']);
-            } else {
-                $this->value = [];
-                foreach ($value as $v) {
-                    $this->value[] = $this->convertValue($v['value']);
-                }
-            }
-        } else {
+        if (!is_array($value)) {
             $this->value = $this->convertValue($value);
+        } else if (count($value) === 1 && !is_array($value[0])) {
+            $this->value = $this->convertValue(current($value)['value']);
+        } else {
+            $this->value = [];
+            array_walk_recursive($value, function($value, $index) {
+                if (array_key_exists('value', $value) && !is_array($value['value'])) {
+                    $this->value[] = $this->convertValue($value['value']);
+                }
+            });
         }
 
         return $this;
